@@ -10,11 +10,11 @@ public class Menu {
         final double TEAPRICE = 2.50;
         final double SMOOTHIEPRICE = 5.00;
 
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Welcome to Java Café");
         System.out.print("Please enter your full name: ");
-        Scanner in = new Scanner(System.in);
-        name = in.nextLine();
-        in.close();
+        name = scanner.nextLine();
 
         String[] nameSplit = name.split("\\s+");
         String firstName = nameSplit[0];
@@ -22,25 +22,22 @@ public class Menu {
         System.out.println("1. Coffee - $3.50\n2. Tea - $2.50\n3. Smoothie - $5.00");
 
         System.out.println("What would you like to order? (type the drink or number)");
-        Scanner scan = new Scanner(System.in);
-        if (scan.hasNextInt()) {
-            int orderNumber = scan.nextInt();
+        if (scanner.hasNextInt()) {
+            int orderNumber = scanner.nextInt();
             orderItem = switch (orderNumber) {
                 case 1 -> "Coffee";
                 case 2 -> "Tea";
                 case 3 -> "Smoothie";
                 default -> orderItem;
             };
-            scan.close();
         } else {
-            String orderName = scan.nextLine();
+            String orderName = scanner.nextLine();
             orderItem = switch (orderName) {
                 case "Coffee" -> "Coffee";
                 case "Tea" -> "Tea";
                 case "Smoothie" -> "Smoothie";
                 default -> orderItem;
             };
-            scan.close();
         }
         System.out.print("Enter quantity: ");
         Scanner quantScan = new Scanner(System.in);
@@ -63,5 +60,6 @@ public class Menu {
             System.out.format("Final amount: $%.2f %n", discountedTotal);
         }
         System.out.format("%nOrder Summary:%nName: ", firstName, "%nDrink: ", orderItem, "%nQuantity: ", quantity,"%nFinal Amount: $%.2f", total );
+        scanner.close();
     }
 }

@@ -59,7 +59,7 @@ public class Menu {
             System.out.format("Discount applied: $%.2f %n", discountedPrice);
             System.out.format("Final amount: $%.2f %n", discountedTotal);
         }
-        System.out.format("%nOrder Summary:%nName: ", firstName, "%nDrink: ", orderItem, "%nQuantity: ", quantity,"%nFinal Amount: $%.2f", total );
+        System.out.format("%nOrder Summary:%nName: %s%nDrink: %s%nQuantity: %S%nFinal Amount: $%.2f", firstName, orderItem, quantity, total );
         scanner.close();
     }
 }

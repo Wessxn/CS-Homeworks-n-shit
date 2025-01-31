@@ -2,16 +2,15 @@ import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) {
-        //Declaring a variables to be used
+        //Declaring variables to be used
         String name;
         String orderItem = "";
         int quantity;
 
-        //initialising 
-        double total = 0.0;
-        final double COFFEEPRICE = 3.50;
-        final double TEAPRICE = 2.50;
-        final double SMOOTHIEPRICE = 5.00;
+        double total = 0.0; // Setting the total to 0
+        final double COFFEEPRICE = 3.50; //Constant price for coffee
+        final double TEAPRICE = 2.50; // Constant price for tea
+        final double SMOOTHIEPRICE = 5.00; // Constant price for smoothie
 
         Scanner scanner = new Scanner(System.in);
 
@@ -20,7 +19,7 @@ public class Menu {
         name = scanner.nextLine();
 
         
-        String[] nameSplit = name.split("\\s+"); //Split string 
+        String[] nameSplit = name.split("\\s+"); 
         String firstName = nameSplit[0]; //Getting first name from string array
         System.out.println("Hello, " + firstName + "! Here's our menu:");
         System.out.println("1. Coffee - $3.50\n2. Tea - $2.50\n3. Smoothie - $5.00");
@@ -45,9 +44,9 @@ public class Menu {
         }
         
         System.out.print("Enter quantity: ");
-        quantity = scanner.nextInt();
+        quantity = scanner.nextInt(); // Getting integer input for quantity 
 
-        total = switch (orderItem) {
+        total = switch (orderItem) { //Multiplies order item price by it's quantity  
             case "Coffee" -> COFFEEPRICE * quantity;
             case "Tea" -> TEAPRICE * quantity;
             case "Smoothie" -> SMOOTHIEPRICE * quantity;
@@ -56,13 +55,13 @@ public class Menu {
 
         if (total > 20.00) {
             double discountedTotal;
-            double discountedPrice = total * 0.10;
-            discountedTotal = total - discountedPrice;
+            double discountedPrice = total * 0.10; //Calculating 10% from price if total is above 20 dollars
+            discountedTotal = total - discountedPrice; //Removing said 10% from total price
             System.out.format("%nTotal before discount: $%.2f %n",  total);
             System.out.format("Discount applied: $%.2f %n", discountedPrice);
             System.out.format("Final amount: $%.2f %n", discountedTotal);
         }
-        System.out.format("%nOrder Summary:%nName: %s%nDrink: %s%nQuantity: %S%nFinal Amount: $%.2f", firstName, orderItem, quantity, total );
+        System.out.format("%nOrder Summary:%nName: %s%nDrink: %s%nQuantity: %S%nFinal Amount: $%.2f", firstName, orderItem, quantity, total ); //Displaying order summary
         scanner.close();
     }
 }
